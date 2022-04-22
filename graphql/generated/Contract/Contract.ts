@@ -40,9 +40,9 @@ export class PairCreated__Params {
   }
 }
 
-export class UniswapV2Factory extends ethereum.SmartContract {
-  static bind(address: Address): UniswapV2Factory {
-    return new UniswapV2Factory("UniswapV2Factory", address);
+export class Contract extends ethereum.SmartContract {
+  static bind(address: Address): Contract {
+    return new Contract("Contract", address);
   }
 
   allPairs(param0: BigInt): Address {

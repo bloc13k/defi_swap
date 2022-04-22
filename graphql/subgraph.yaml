@@ -1,19 +1,19 @@
 specVersion: 0.0.2
-description: Automated token exchange on Ethereum
+description: Automated token exchange on Ethereum.
 repository: https://github.com/bloc13k/defi_swap/graphql
 schema:
   file: ./schema.graphql
 dataSources:
-  - kind: ethereum
-    name: UniswapV2Factory
-    network: rinkbey
+  - kind: ethereum/contract
+    name: Factory
+    network: mainnet
     source:
       address: '0x6243192f9ba494BA40017C66819054Bfe22bD3A5'
-      abi: UniswapV2Factory
-      startBlock: 14635990
+      abi: Factory
+      startBlock: 14636378
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.3
       language: wasm/assemblyscript
       file: ./src/mappings/factory.ts
       entities:
@@ -34,12 +34,12 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pair
-    network: rinkbey
+    network: mainnet
     source:
       abi: Pair
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.3
       language: wasm/assemblyscript
       file: ./src/mappings/core.ts
       entities:
