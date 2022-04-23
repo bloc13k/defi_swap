@@ -40,9 +40,9 @@ export class PairCreated__Params {
   }
 }
 
-export class Contract extends ethereum.SmartContract {
-  static bind(address: Address): Contract {
-    return new Contract("Contract", address);
+export class Factory extends ethereum.SmartContract {
+  static bind(address: Address): Factory {
+    return new Factory("Factory", address);
   }
 
   allPairs(param0: BigInt): Address {

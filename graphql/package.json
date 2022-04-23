@@ -1,13 +1,13 @@
 {
-  "name": "Factory",
+  "name": "factory",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ bloc13k/Factory",
-    "create-local": "graph create --node http://localhost:8020/ bloc13k/Factory",
-    "remove-local": "graph remove --node http://localhost:8020/ bloc13k/Factory",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 bloc13k/Factory"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ bloc13k/factory",
+    "create-local": "graph create --node http://localhost:8020/ bloc13k/factory",
+    "remove-local": "graph remove --node http://localhost:8020/ bloc13k/factory",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 bloc13k/factory"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.29.0",

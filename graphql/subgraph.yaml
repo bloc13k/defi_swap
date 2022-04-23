@@ -1,27 +1,26 @@
 specVersion: 0.0.2
-description: Automated token exchange on Ethereum.
-repository: https://github.com/bloc13k/defi_swap/graphql
+description: IT5 graphql swap APIs
+repository: https://github.com/bloc13k/defi_swap/tree/main/graphql
 schema:
   file: ./schema.graphql
 dataSources:
-  - kind: ethereum/contract
-    name: Factory
-    network: mainnet
+  - kind: ethereum
+    name: UniswapV2Factory
+    network: rinkbey
     source:
-      address: '0x6243192f9ba494BA40017C66819054Bfe22bD3A5'
-      abi: Factory
-      startBlock: 14636378
+      address: "0x6243192f9ba494BA40017C66819054Bfe22bD3A5"
+      abi: UniswapV2Factory
+      startBlock: 14643755
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: ./src/mappings/factory.ts
       entities:
         - Pair
         - Token
       abis:
-        - name: Factory
-          file: ./abis/factory.json
+        - name: UniswapV2Factory
+          file: ./abis/UniswapV2Factory.json
         - name: ERC20
           file: ./abis/ERC20.json
         - name: ERC20SymbolBytes
@@ -30,18 +29,19 @@ dataSources:
           file: ./abis/ERC20NameBytes.json
       eventHandlers:
         - event: PairCreated(indexed address,indexed address,address,uint256)
-          handler: handleNewPair
+          handler: handlePairCreated
+      file: ./src/mappings/Factory.ts
 templates:
-  - kind: ethereum/contract
-    name: Pair
-    network: mainnet
+  - name: Pair
+    kind: ethereum/contract
+    network: rinkbey
     source:
       abi: Pair
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
-      file: ./src/mappings/core.ts
+      file: ./src/mappings/Pair.ts
       entities:
         - Pair
         - Token
@@ -49,7 +49,7 @@ templates:
         - name: Pair
           file: ./abis/pair.json
         - name: Factory
-          file: ./abis/factory.json
+          file: ./abis/UniswapV2Factory.json
       eventHandlers:
         - event: Mint(indexed address,uint256,uint256)
           handler: handleMint
@@ -61,3 +61,4 @@ templates:
           handler: handleTransfer
         - event: Sync(uint112,uint112)
           handler: handleSync
+

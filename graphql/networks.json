@@ -1,6 +1,6 @@
 {
   "rinkeby": {
-    "Contract": {
+    "UniswapV2Factory": {
       "address": "0x6243192f9ba494BA40017C66819054Bfe22bD3A5"
     }
   }
